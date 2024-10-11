@@ -13,7 +13,7 @@ nltk.download('vader_lexicon')
 class SentimentApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Voice Sentimen App")
+        self.root.title("VoiceIT")
         self.root.geometry("400x300")
 
         # Label to display instructions
@@ -55,3 +55,21 @@ class SentimentApp:
                 messagebox.showerror("Error", "Could not understand the audio")
             except sr.RequestError as e:
                 messagebox.showerror("Error", f"Could not request results; {e}")
+
+    def analyze_sentiment(self, text):
+        sia = SentimentIntensityAnalyzer()
+        sentiment = sia.polarity_scores(text)
+        
+        # Determine the sentiment based on compound score
+        if sentiment['compound'] >= 0.05:
+            return "Good Conversation"
+        elif sentiment['compound'] <= -0.05:
+            return "Bad Conversation"
+        else:
+            return "Normal Conversation"
+        
+# Create the Tkinter window
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = SentimentApp(root)
+    root.mainloop()
