@@ -1,0 +1,3 @@
+
+This is a voice sentiment analysis application that records or uploads audio files, transcribes the speech, and then analyzes the sentiment of the conversation. It classifies the conversation as Good, Normal, or Bad based on the tone and specific words used in the conversation.
+The app is powered by Python's SpeechRecognition, Transformers (BERT) for sentiment analysis, and Streamlit for the user interface.
